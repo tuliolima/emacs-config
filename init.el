@@ -33,7 +33,8 @@
     "elisp-editing.el"
     "setup-clojure.el"
     "setup-js.el"
-    "shell-integration.el"))
+    "shell-integration.el"
+    "key-bindings.el"))
 
 (dolist (x addons)
   (load x))
@@ -43,3 +44,4 @@
 
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file 'noerror)
+(put 'scroll-left 'disabled nil)

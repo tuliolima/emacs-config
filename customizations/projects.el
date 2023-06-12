@@ -10,3 +10,5 @@
 ;; counsel-projectile integrates projectile with
 ;; counsel's browse-and-select UI
 (setup (:package counsel-projectile))
+
+(setq projectile-switch-project-action 'magit-status)

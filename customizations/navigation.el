@@ -31,3 +31,5 @@
 ;; see screenshots: https://github.com/Yevgnen/ivy-rich/blob/master/screenshots.org
 (setup (:package ivy-rich)
   (ivy-rich-mode))
+
+(global-set-key (kbd "C-S-o") 'find-file-other-window)

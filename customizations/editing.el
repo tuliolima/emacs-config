@@ -18,7 +18,7 @@
 ;; Highlight current line
 (global-hl-line-mode 1)
 
-;; line numbers
+;; show line numbers
 (global-display-line-numbers-mode 1)
 ;; but not everywhere
 (dolist (mode '(org-mode-hook
@@ -47,14 +47,14 @@
 ;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Backup-Files.html
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                "backups"))))
-(setq auto-save-default nil)
+(setq auto-save-default t)
 
 ;; comments
-(defun toggle-comment-on-line ()
-  "comment or uncomment current line"
-  (interactive)
-  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
-(global-set-key (kbd "C-;") 'toggle-comment-on-line)
+;; (defun toggle-comment-on-line ()
+;;   "comment or uncomment current line"
+;;   (interactive)
+;;   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+(global-set-key (kbd "C-/") 'comment-dwim)
 
 ;; use 2 spaces for tabs
 (defun die-tabs ()
@@ -71,4 +71,20 @@
       (ns-get-selection-internal 'CLIPBOARD)
     (quit nil)))
 
-(setq electric-indent-mode nil)
+(setq electric-indent-mode t)
+
+;; deletes the selected region when typing
+(delete-selection-mode 1)
+;; deactivates auto-copy of regions after selection
+(setq-default select-active-regions nil)
+
+;; converts markdown to html
+(defun markdown-html (buffer)
+    (princ (with-current-buffer buffer
+      (format "<!DOCTYPE html><html><xmp theme=\"united\" style=\"display:none;\">%s</xmp><script src=\"http://ndossougbe.github.io/strapdown/dist/strapdown.js\"></script></html>"
+              (buffer-substring-no-properties (point-min) (point-max))))
+    (current-buffer)))
+
+(setq org-support-shift-select t)
+
+(global-set-key (kbd "C-a") 'mark-whole-buffer)

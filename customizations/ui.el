@@ -6,12 +6,17 @@
 
 (tooltip-mode -1)                 ;; disable tooltips
 (tool-bar-mode -1)                ;; the toolbar is pretty ugly
+(menu-bar-mode -1)
 (scroll-bar-mode -1)              ;; disable visible scrollbar
 (blink-cursor-mode 0)             ;; turn off blinking cursor. distracting!
 (setq create-lockfiles nil)       ;; no need for ~ files when editing
 (fset 'yes-or-no-p 'y-or-n-p)     ;; changes all yes/no questions to y/n type
 (setq inhibit-startup-message t)  ;; go straight to scratch buffer on startup
 (setq ring-bell-function 'ignore) ;; turn off audible bell
+
+;; show a vertical line to help limiting line width
+(setq-default display-fill-column-indicator-column 80)
+(global-display-fill-column-indicator-mode 1)
 
 ;; show full path in title bar
 (setq-default frame-title-format "%b (%f)")
@@ -25,7 +30,7 @@
 
 ;; on a Mac, don't pop up font menu
 (when (string-equal system-type "darwin") 'ok
-  (global-set-key (kbd "s-t") '(lambda () (interactive))))
+  (global-set-key (kbd "s-t") #'(lambda () (interactive))))
 
 ;; doom is a whole Emacs distribution unto itself,
 ;; but it's got some really nice packages that you
@@ -47,7 +52,7 @@
 ;; https://github.com/doomemacs/themes/tree/screenshots
 (setup (:package doom-themes)
   (when (not custom-enabled-themes)
-    (load-theme 'doom-dracula t)))
+    (load-theme 'doom-solarized-light t)))
 
 ;; These settings relate to how emacs interacts with your operating system
 (setq ;; makes killing/yanking interact with the clipboard
@@ -71,12 +76,13 @@
 
 ;; CUSTOMIZE
 
-;; You can uncomment this to remove the graphical toolbar at the top. After
-;; awhile, you won't need the toolbar.
-;; (tool-bar-mode -1)
-
 ;; Your choice of font is very personal, and you must have installed it
 ;; on your system before you specify it here,
 ;; Some font suggestions:  https://www.creativebloq.com/features/the-best-monospace-fonts-for-coding
 ;; (set-face-attribute 'default nil :font "Fira Code")
 
+;; Closes the current window
+(global-set-key (kbd "C-w") 'delete-window)
+
+;; Highlight some key words
+(font-lock-add-keywords nil '(("\\b\\(FIXME\\|TODO\\|BUG\\)\\b" 1 font-lock-warning-face t)))

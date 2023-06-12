@@ -34,6 +34,7 @@
 (setup (:package company)
   (:hook-into cider-mode
 	      cider-repl-mode))
+(global-set-key (kbd "C-SPC") #'company-complete)
 
 ;; hydra provides a nice looking menu for commands
 ;; to see what's available, use M-x and the prefix cider-hydra
@@ -74,3 +75,9 @@
   (interactive)
   (cider-repl-set-ns "user"))
 
+(setq clojure-toplevel-inside-comment-form t)
+(setq cider-eval-spinner-type 'moon)
+(setq cider-overlays-use-font-lock t)
+(setq cider-result-overlay-position 'at-point)
+(setq cider-eval-result-duration 'change)
+(setq cider-save-file-on-load t)
