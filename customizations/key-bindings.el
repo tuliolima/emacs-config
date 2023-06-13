@@ -5,7 +5,7 @@
 (global-set-key (kbd "C-<iso-lefttab>") (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-S-z") 'undo-redo)
-(global-set-key (kbd "C-p") 'ivy-switch-buffer)
+(global-set-key (kbd "s-<tab>") 'ivy-switch-buffer)
 (global-set-key (kbd "C-f") 'swiper)
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "C-S-x") 'kill-region)

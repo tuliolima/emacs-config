@@ -4,7 +4,7 @@
 ;; https://projectile.mx/
 (setup (:package projectile)
   (projectile-mode +1)
-  (:bind "s-p" projectile-command-map
+  (:bind "C-p" projectile-command-map
          "C-c p" projectile-command-map))
 
 ;; counsel-projectile integrates projectile with
