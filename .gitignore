@@ -17,3 +17,8 @@ archive-contents
 recentf
 transient
 network-security.data
+session.*
+eshell/
+.lsp-session*
+tramp
+url/
