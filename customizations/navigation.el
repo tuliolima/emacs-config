@@ -33,3 +33,4 @@
   (ivy-rich-mode))
 
 (global-set-key (kbd "C-S-o") 'find-file-other-window)
+(global-set-key (kbd "C-k") 'message-kill-buffer)

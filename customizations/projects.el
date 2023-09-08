@@ -11,4 +11,4 @@
 ;; counsel's browse-and-select UI
 (setup (:package counsel-projectile))
 
-(setq projectile-switch-project-action 'magit-status)
+(setq projectile-switch-project-action 'projectile-dired)

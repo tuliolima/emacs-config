@@ -26,7 +26,7 @@
 (add-to-list 'default-frame-alist '(width . 100))
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 130)
 
 ;; on a Mac, don't pop up font menu
 (when (string-equal system-type "darwin") 'ok
