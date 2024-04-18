@@ -87,7 +87,9 @@
 ;; Highlight some key words
 (font-lock-add-keywords nil '(("\\b\\(FIXME\\|TODO\\|BUG\\)\\b" 1 font-lock-warning-face t)))
 
-(setup (:package auto-dark)
-  :config (auto-dark-mode t))
-(setq auto-dark-light-theme 'doom-solarized-light
-      auto-dark-dark-theme 'doom-solarized-dark)
+(use-package auto-dark
+  :config
+  (auto-dark-mode t)
+  :custom
+  (auto-dark-light-theme 'doom-solarized-light)
+  (auto-dark-dark-theme 'doom-solarized-dark))

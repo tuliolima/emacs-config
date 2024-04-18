@@ -17,6 +17,7 @@
     (package-refresh-contents))
   (package-install 'setup))
 (require 'setup)
+(require 'use-package)
 
 ;; All other features are loaded one by one from
 ;; the customizations directory. Read those files
@@ -25,6 +26,7 @@
 
 (defvar addons
   '("ui.el"
+    "setup-lsp.el"
     "navigation.el"
     "projects.el"
     "git.el"
@@ -34,7 +36,9 @@
     "setup-clojure.el"
     "setup-js.el"
     "shell-integration.el"
-    "key-bindings.el"))
+    "key-bindings.el"
+    "dired-config.el"
+    "setup-python.el"))
 
 (dolist (x addons)
   (load x))

@@ -113,3 +113,13 @@
 
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
+
+;; Multiline editing
+;; (require 'multiple-cursors)
+;; ;; (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+;; (define-key mc/keymap (kbd "<return>") nil)
+;; ;; (global-set-key (kbd "C-m") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-n") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C-S-m") 'mc/unmark-next-like-this)
+;; (global-set-key (kbd "C-S-n") 'mc/unmark-previous-like-this)
+;; (global-set-key (kbd "C-M-S-m") 'mc/mark-all-like-this)

@@ -8,9 +8,9 @@
 (global-set-key (kbd "s-<tab>") 'ivy-switch-buffer)
 (global-set-key (kbd "C-f") 'swiper)
 (global-set-key (kbd "C-s") 'save-buffer)
-(global-set-key (kbd "C-S-x") 'kill-region)
-(global-set-key (kbd "C-S-c") 'kill-ring-save)
-(global-set-key (kbd "C-S-v") 'yank)
+
+;; Enable CUA key bindings
+(cua-mode t)
 
 ;; Go to a symbol definition
 (global-set-key (kbd "<f12>") 'lsp-find-definition)

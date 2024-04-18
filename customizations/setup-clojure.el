@@ -4,6 +4,9 @@
   (:hook lsp-enable-which-key-integration)
   (:bind "M-<f7>" lsp-find-references))
 
+(use-package flycheck-clj-kondo
+  :ensure t)
+
 ;; clojure-mode is (naturally) the major mode for editing
 ;; Clojure and ClojureScript. subword-mode allows words
 ;; in camel case to be treated as separate words for
@@ -14,7 +17,8 @@
 (setup (:package clojure-mode)
   (:hook subword-mode
          paredit-mode
-         lsp))
+         lsp
+         flycheck-clj-kondo))
 
 ;; CIDER is a whole interactive development environment for
 ;; Clojure. There is a ton of functionality here, so be sure
@@ -27,7 +31,8 @@
            cider-auto-select-error-buffer t
            cider-repl-history-file "~/.emacs.d/cider-history"
            cider-repl-pop-to-buffer-on-connect t
-           cider-repl-wrap-history t))
+           cider-repl-wrap-history t
+           cider-test-show-report-on-success t))
 
 ;; company provides auto-completion for CIDER
 ;; see https://docs.cider.mx/cider/usage/code_completion.html
@@ -81,3 +86,4 @@
 (setq cider-result-overlay-position 'at-point)
 (setq cider-eval-result-duration 'change)
 (setq cider-save-file-on-load t)
+(setq cider-use-overlays t)
