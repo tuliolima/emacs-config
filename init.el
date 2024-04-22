@@ -38,7 +38,8 @@
     "shell-integration.el"
     "key-bindings.el"
     "dired-config.el"
-    "setup-python.el"))
+    "setup-python.el"
+    "setup-yaml.el"))
 
 (dolist (x addons)
   (load x))
