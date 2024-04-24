@@ -26,7 +26,7 @@
 (add-to-list 'default-frame-alist '(width . 100))
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 140)
 
 ;; on a Mac, don't pop up font menu
 (when (string-equal system-type "darwin") 'ok
@@ -37,12 +37,12 @@
 ;; can use a-la-carte. doom-modeline is simply a more
 ;; modern and more beautiful modeline.
 ;; doom-modeline uses nice icons from all-the-icons
-(setup (:package all-the-icons))
+(use-package all-the-icons
+  :if (display-graphic-p))
 
-;; for some reason, this crashes Emacs on Windows. Argh!
-(setup (when (not (string-equal system-type "windows-nt"))
-         (:package doom-modeline)
-         (doom-modeline-mode t)))
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
 
 ;; Lots of great themes, both light ones
 ;; and dark ones. Use M-x load-theme to select one.
