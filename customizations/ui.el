@@ -36,10 +36,6 @@
 ;; but it's got some really nice packages that you
 ;; can use a-la-carte. doom-modeline is simply a more
 ;; modern and more beautiful modeline.
-;; doom-modeline uses nice icons from all-the-icons
-(use-package all-the-icons
-  :if (display-graphic-p))
-
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
