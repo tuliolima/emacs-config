@@ -25,21 +25,26 @@
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
 (defvar addons
-  '("ui.el"
-    "setup-lsp.el"
+  '("key-bindings.el"
+    "ui.el"
     "navigation.el"
-    "projects.el"
-    "git.el"
-    "filetree.el"
     "editing.el"
     "elisp-editing.el"
+    "filetree.el"
+    "git.el"
+    "projects.el"
+    "setup-quelpa.el"
     "setup-clojure.el"
+    "setup-copilot.el"
+    "setup-company.el"
     "setup-js.el"
-    "shell-integration.el"
-    "key-bindings.el"
-    "dired-config.el"
+    "setup-json.el"
+    "setup-lsp.el"
     "setup-python.el"
-    "setup-yaml.el"))
+    "setup-yaml.el"
+    "shell-integration.el"
+    "sql-bigquery.el"
+    "dired-config.el"))
 
 (dolist (x addons)
   (load x))
