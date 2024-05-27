@@ -9,6 +9,8 @@
 
 ;; (setup (:package blacken))
 
+;; !!! You must `run pip install 'python-lsp-server[all]'`
+
 (use-package python-mode
   :ensure t
   :hook (python-mode . lsp-deferred)

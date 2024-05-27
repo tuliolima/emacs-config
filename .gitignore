@@ -22,3 +22,5 @@ eshell/
 .lsp-session*
 tramp
 url/
+quelpa
+eln-cache
