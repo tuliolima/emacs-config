@@ -9,8 +9,14 @@
 (global-set-key (kbd "C-f") 'swiper)
 (global-set-key (kbd "C-s") 'save-buffer)
 
-;; Enable CUA key bindings
-(cua-mode t)
+(use-package cua-base
+  :init (cua-mode t)
+  :config
+  (unbind-key "C-<return>" cua-global-keymap)
+  (unbind-key "C-SPC")
+  (unbind-key "C-S-SPC")
+  :custom
+  (cua-keep-region-after-copy t))
 
 ;; Go to a symbol definition
 (global-set-key (kbd "<f12>") 'lsp-find-definition)
