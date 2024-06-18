@@ -4,8 +4,8 @@
   (:hook lsp-enable-which-key-integration)
   (:bind "M-<f7>" lsp-find-references))
 
-(use-package flycheck-clj-kondo
-  :ensure t)
+;; (use-package flycheck-clj-kondo
+;;   :ensure t)
 
 ;; clojure-mode is (naturally) the major mode for editing
 ;; Clojure and ClojureScript. subword-mode allows words
@@ -16,30 +16,38 @@
 ;; like names of Java classes (e.g. JavaClassName)
 (setup (:package clojure-mode)
   (:hook subword-mode
-         paredit-mode
-         lsp
-         flycheck-clj-kondo))
+         lsp))
 
-;; CIDER is a whole interactive development environment for
-;; Clojure. There is a ton of functionality here, so be sure
-;; to check out the excellent documentation at
-;; https://docs.cider.mx/cider/index.html
-(setup (:package cider)
-  (:bind "C-c u" cider-user-ns
-         "C-M-r" cider-refresh)
-  (:option cider-show-error-buffer t
-           cider-auto-select-error-buffer t
-           cider-repl-history-file "~/.emacs.d/cider-history"
-           cider-repl-pop-to-buffer-on-connect t
-           cider-repl-wrap-history t
-           cider-test-show-report-on-success t))
+(use-package paredit
+  :ensure t
+  :hook
+  (clojure-mode . enable-paredit-mode)
+  (emacs-lisp-mode . enable-paredit-mode)
+  (cider-repl-mode . enable-paredit-mode)
+  (lisp-mode . enable-paredit-mode)
+  :bind
+  (:map paredit-mode-map
+   ("C-<right>" . paredit-forward)
+   ("C-<left>" . paredit-backward)
+   ("C-<up>" . paredit-backward-up)
+   ("C-<down>" . paredit-forward-down)
+   ("C-M-." . paredit-forward-slurp-sexp)
+   ("C-M-," . paredit-forward-barf-sexp)))
 
-;; company provides auto-completion for CIDER
-;; see https://docs.cider.mx/cider/usage/code_completion.html
-(setup (:package company)
-  (:hook-into cider-mode
-	      cider-repl-mode))
-(global-set-key (kbd "C-SPC") #'company-complete)
+(use-package cider
+  :ensure t
+  :bind (:map cider-mode-map
+         ("C-c u" . cider-user-ns)
+         ("C-M-r" . cider-refresh)
+         ("C-<return>" . cider-eval-sexp-at-point)
+         ("M-RET" . cider-eval-defun-at-point))
+  :custom
+  (cider-show-error-buffer t)
+  (cider-auto-select-error-buffer t)
+  (cider-repl-history-file "~/.emacs.d/cider-history")
+  (cider-repl-pop-to-buffer-on-connect t)
+  (cider-repl-wrap-history t)
+  (cider-test-show-report-on-success t))
 
 ;; hydra provides a nice looking menu for commands
 ;; to see what's available, use M-x and the prefix cider-hydra
@@ -53,10 +61,6 @@
 (setup (:package clj-refactor)
   (cljr-add-keybindings-with-prefix "C-c C-m")
   (:hook-into clojure-mode))
-
-;; enable paredit in your REPL
-(setup cider-repl-mode
-  (:hook paredit-mode))
 
 ;; Use clojure mode for other extensions
 (add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
