@@ -25,11 +25,27 @@
 (add-to-list 'default-frame-alist '(height . 80))
 (add-to-list 'default-frame-alist '(width . 100))
 
-;; increase font size for better readability
-(set-face-attribute 'default nil :height 140)
+;; set the default font size
+(set-face-attribute 'default nil :height 110)
+
+(defun zoom-in ()
+  "Increase the font size."
+  (interactive)
+  (set-face-attribute 'default nil :height
+                      (+ (face-attribute 'default :height) 10)))
+
+(defun zoom-out ()
+  "Decrease the font size."
+  (interactive)
+  (set-face-attribute 'default nil :height
+                      (- (face-attribute 'default :height) 10)))
+
+(global-set-key (kbd "C-+") 'zoom-in)
+(global-set-key (kbd "C--") 'zoom-out)
 
 ;; on a Mac, don't pop up font menu
-(when (string-equal system-type "darwin") 'ok
+(when (string-equal system-type "darwin")
+  'ok
   (global-set-key (kbd "s-t") #'(lambda () (interactive))))
 
 ;; doom is a whole Emacs distribution unto itself,
