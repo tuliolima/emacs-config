@@ -28,6 +28,7 @@
 ;; set the default font size
 (set-face-attribute 'default nil :height 110)
 
+;; zoom in/out with C-+ and C--
 (defun zoom-in ()
   "Increase the font size."
   (interactive)
@@ -41,6 +42,7 @@
                       (- (face-attribute 'default :height) 10)))
 
 (global-set-key (kbd "C-+") 'zoom-in)
+(global-set-key (kbd "C-=") 'zoom-in)
 (global-set-key (kbd "C--") 'zoom-out)
 
 ;; on a Mac, don't pop up font menu
