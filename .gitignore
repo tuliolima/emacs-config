@@ -24,3 +24,8 @@ tramp
 url/
 quelpa
 eln-cache
+request/
+straight/
+copilot-chat-shell/
+.mc-lists.el
+.last-package-update-day

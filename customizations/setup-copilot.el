@@ -15,3 +15,18 @@
          ("M-]" . 'copilot-next-completion)
          ("C-<right>" . 'copilot-accept-completion-by-word)
          ("C-g" . 'copilot-clear-overlay)))
+
+(use-package request
+  :ensure t)
+
+(use-package shell-maker
+  :straight (:host github :repo "xenodium/chatgpt-shell" :files ("shell-maker.el")))
+
+(use-package copilot-chat
+  :straight (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
+  :after request
+  :custom
+  (copilot-chat-frontend 'shell-maker)
+  :config
+  (require 'copilot-chat-shell-maker)
+  (push '(shell-maker . copilot-chat-shell-maker-init) copilot-chat-frontend-list))
