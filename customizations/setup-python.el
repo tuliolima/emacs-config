@@ -22,5 +22,6 @@
   (require 'dap-python))
 
 (use-package pyvenv
+  :ensure t
   :config
   (pyvenv-mode 1))

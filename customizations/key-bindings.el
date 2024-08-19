@@ -10,6 +10,7 @@
 (global-set-key (kbd "C-s") 'save-buffer)
 
 (use-package cua-base
+  :ensure t
   :init (cua-mode t)
   :config
   (unbind-key "C-<return>" cua-global-keymap)

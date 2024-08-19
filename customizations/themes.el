@@ -9,6 +9,7 @@
     (load-theme 'doom-solarized-light t)))
 
 (use-package auto-dark
+  :ensure t
   :config
   (auto-dark-mode t)
   :custom
