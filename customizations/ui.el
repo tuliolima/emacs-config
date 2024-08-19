@@ -90,3 +90,7 @@
 
 ;; Highlight some key words
 (font-lock-add-keywords nil '(("\\b\\(FIXME\\|TODO\\|BUG\\)\\b" 1 font-lock-warning-face t)))
+
+(use-package all-the-icons
+  :ensure t
+  :if (display-graphic-p))
