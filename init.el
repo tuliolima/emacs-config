@@ -1,9 +1,10 @@
 ;; -*- lexical-binding: t; -*-
+
 ;; Emacs comes with package.el for installing packages.
 ;; Try M-x list-packages to see what's available.
 (require 'package)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+(setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 
@@ -18,6 +19,22 @@
   (package-install 'setup))
 (require 'setup)
 (require 'use-package)
+
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
 ;; All other features are loaded one by one from
 ;; the customizations directory. Read those files
@@ -37,6 +54,8 @@
     "setup-clojure.el"
     "setup-copilot.el"
     "setup-company.el"
+    "setup-dbt.el"
+    "setup-docker.el"
     "setup-js.el"
     "setup-json.el"
     "setup-lsp.el"
@@ -44,7 +63,8 @@
     "setup-yaml.el"
     "shell-integration.el"
     "sql-bigquery.el"
-    "dired-config.el"))
+    "dired-config.el"
+    "themes.el"))
 
 (dolist (x addons)
   (load x))
