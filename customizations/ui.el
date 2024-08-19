@@ -26,7 +26,7 @@
 (add-to-list 'default-frame-alist '(width . 100))
 
 ;; set the default font size
-(set-face-attribute 'default nil :height 110)
+(set-face-attribute 'default nil :height 130)
 
 ;; zoom in/out with C-+ and C--
 (defun zoom-in ()
@@ -57,16 +57,6 @@
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
-
-;; Lots of great themes, both light ones
-;; and dark ones. Use M-x load-theme to select one.
-;; The first time you load one, it asks for
-;; confirmation. You can see what they all
-;; look like here:
-;; https://github.com/doomemacs/themes/tree/screenshots
-(setup (:package doom-themes)
-  (when (not custom-enabled-themes)
-    (load-theme 'doom-solarized-light t)))
 
 ;; These settings relate to how emacs interacts with your operating system
 (setq ;; makes killing/yanking interact with the clipboard
@@ -100,10 +90,3 @@
 
 ;; Highlight some key words
 (font-lock-add-keywords nil '(("\\b\\(FIXME\\|TODO\\|BUG\\)\\b" 1 font-lock-warning-face t)))
-
-(use-package auto-dark
-  :config
-  (auto-dark-mode t)
-  :custom
-  (auto-dark-light-theme 'doom-solarized-light)
-  (auto-dark-dark-theme 'doom-solarized-dark))
