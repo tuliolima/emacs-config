@@ -6,7 +6,8 @@
                    :files ("*.el"))
   :hook (prog-mode . copilot-mode)
   :custom
-  (copilot-node-executable "/home/tulio.abner/.nvm/versions/node/v20.13.1/bin/node")
+  (copilot-node-executable
+   (concat "~/.nvm/versions/node/v22.6.0/bin/node"))
   (copilot-indent-offset-warning-disable t)
   :bind (("C-SPC" . 'copilot-complete)
          :map copilot-completion-map
