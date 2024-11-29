@@ -39,7 +39,7 @@ prerequisites:
 2. [clojure-lsp](https://clojure-lsp.io/installation/) enables Find References,
    live linting, and many more features.
 3. To get nice icons in your modeline, you need the fonts installed. After
-   startup the first time, run `M-x all-the-icons-install-fonts`. You will only 
+   startup the first time, run `M-x nerd-icons-install-fonts`. You will only
    need to do this once.
 
 ### A Word About Project-Wide Search

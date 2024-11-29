@@ -50,13 +50,21 @@
   'ok
   (global-set-key (kbd "s-t") #'(lambda () (interactive))))
 
+(use-package nerd-icons
+  :ensure t)
+
+;; Needed to show Github notifications in the modeline
+(use-package ghub
+  :ensure t)
+
 ;; doom is a whole Emacs distribution unto itself,
 ;; but it's got some really nice packages that you
 ;; can use a-la-carte. doom-modeline is simply a more
 ;; modern and more beautiful modeline.
 (use-package doom-modeline
   :ensure t
-  :hook (after-init . doom-modeline-mode))
+  :hook (after-init . doom-modeline-mode)
+  :custom (doom-modeline-github t))
 
 ;; These settings relate to how emacs interacts with your operating system
 (setq ;; makes killing/yanking interact with the clipboard
@@ -91,6 +99,4 @@
 ;; Highlight some key words
 (font-lock-add-keywords nil '(("\\b\\(FIXME\\|TODO\\|BUG\\)\\b" 1 font-lock-warning-face t)))
 
-(use-package all-the-icons
-  :ensure t
-  :if (display-graphic-p))
+(add-hook 'emacs-startup-hook #'projectile-dired)
