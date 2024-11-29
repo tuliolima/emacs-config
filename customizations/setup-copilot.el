@@ -25,7 +25,7 @@
 
 (use-package copilot-chat
   :straight (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
-  :after request
+  :after (request shell-maker)
   :custom
   (copilot-chat-frontend 'shell-maker)
   :config

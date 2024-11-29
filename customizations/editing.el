@@ -55,6 +55,7 @@
 ;;   (interactive)
 ;;   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 (global-set-key (kbd "C-/") 'comment-dwim)
+(global-set-key (kbd "C-?") 'comment-line)
 
 ;; use 2 spaces for tabs
 (defun die-tabs ()
