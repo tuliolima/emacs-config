@@ -10,3 +10,6 @@
   :config
   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
+
+;; Activate dired-hide-details-mode by default
+(add-hook 'dired-mode-hook #'dired-hide-details-mode)
