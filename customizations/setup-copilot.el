@@ -4,7 +4,10 @@
                    :repo "copilot-emacs/copilot.el"
                    :branch "main"
                    :files ("*.el"))
-  :hook (prog-mode . copilot-mode)
+  :hook ((prog-mode . copilot-mode)
+         (yaml-mode . copilot-mode)
+         (markdown-mode . copilot-mode)
+         (text-mode . copilot-mode))
   :custom
   (copilot-node-executable
    (concat "~/.nvm/versions/node/v22.6.0/bin/node"))
