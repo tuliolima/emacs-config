@@ -27,6 +27,8 @@
           (save-excursion
             (goto-char (point-max))
             (insert "\n\n")
+            (insert "═════════════════════════════════════ README ═══════════════════════════════════")
+            (insert "\n\n")
             (insert-file-contents readme-file)
             (message "Inserted README.md at the end of the buffer.")))))))
 
