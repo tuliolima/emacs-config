@@ -59,6 +59,7 @@
     "setup-js.el"
     "setup-json.el"
     "setup-lsp.el"
+    "setup-markdown.el"
     "setup-python.el"
     "setup-yaml.el"
     "shell-integration.el"
