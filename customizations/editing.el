@@ -116,11 +116,15 @@
 (global-set-key (kbd "M-<down>") 'move-line-down)
 
 ;; Multiline editing
-;; (require 'multiple-cursors)
-;; ;; (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-;; (define-key mc/keymap (kbd "<return>") nil)
-;; ;; (global-set-key (kbd "C-m") 'mc/mark-next-like-this)
-;; (global-set-key (kbd "C-n") 'mc/mark-previous-like-this)
-;; (global-set-key (kbd "C-S-m") 'mc/unmark-next-like-this)
-;; (global-set-key (kbd "C-S-n") 'mc/unmark-previous-like-this)
-;; (global-set-key (kbd "C-M-S-m") 'mc/mark-all-like-this)
+(use-package multiple-cursors
+  :ensure t
+  :demand t
+  :bind
+  (("C-S-c C-S-c" . mc/edit-lines)
+   ;; ("C-<" . mc/mark-previous-like-this)
+   ;; ("C-S-n" . mc/unmark-previous-like-this)
+   ("C->" . mc/mark-next-like-this)
+   ("C-<" . mc/unmark-next-like-this)
+   ("C-c C->" . mc/mark-all-like-this)
+   ("C-c C-<" . mc/unmark-all-like-this))
+  (:map mc/keymap ("<return>" . nil)))
